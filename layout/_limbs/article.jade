@@ -1,0 +1,22 @@
+mixin article(article)
+  include meta
+  //- +meta(article)
+
+  article.post
+    header.post
+      h1
+        a(href=url_for(article.path))
+          = article.title
+
+    .post
+      != article.content
+
+    footer.post.group
+      .post.sign
+          = article.date.format("YYYY-MM-DD")
+
+      ul.tags.group
+        each tag in article.tags.toArray()
+          li.tag
+            a(href=url_for(tag.path))
+              = tag.name

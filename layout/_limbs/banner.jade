@@ -1,0 +1,19 @@
+h1#site-title
+  a#lefty(href=config.root)
+    = config.title
+
+nav#page_nav
+  ul.group.links
+    li.nav_link
+      | Ø
+    li.nav_link
+      | Ø
+    li.nav_link
+      a(href=url_for('atom.xml'))
+        | atom
+
+div#site-subtitle
+  = config.subtitle
+
+//- video#bgvid(preload="auto" autoplay="true" loop="loop" muted width="320px" height="240px")
+//-  source(src=url_for("main.webm") type='video/webm')

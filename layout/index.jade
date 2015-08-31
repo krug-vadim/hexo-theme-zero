@@ -1,0 +1,43 @@
+extends base
+
+block content
+  -
+    list = new Object;
+    years = new Array;
+    months = new Object;
+
+    site.posts.forEach(function(post) {
+      if (!list[post.date.year()]) {
+        years.push(post.date.year());
+        months[post.date.year()] = [post.date.month()];
+        list[post.date.year()] = new Object;
+        list[post.date.year()][post.date.month()] = [post];
+      } else {
+        if ( list[post.date.year()][post.date.month()] ){
+          list[post.date.year()][post.date.month()].push(post);
+        } else {
+          months[post.date.year()].push(post.date.month());
+          list[post.date.year()][post.date.month()] = [post];
+        }
+      }
+    });
+
+    years.sort();
+    years.forEach(function(year){
+      months[year].sort();
+    })
+
+  #years
+    each year in years
+      nav.year
+        header
+          h1
+            a(href=url_for('archives/' + moment().year(year).format("YYYY") + "/"))
+              = year
+            | :
+        ul.months
+          each month in months[year]
+            li.month.group
+              a(href=url_for('archives/' + moment().year(year).format("YYYY") + "/" + moment().month(month).format("MM")))
+                = moment().month(month).format("MM")
+
