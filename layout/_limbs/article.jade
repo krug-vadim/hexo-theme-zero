@@ -12,7 +12,7 @@ mixin article(article)
       != article.content
 
     footer.post.group
-      .post.sign
+      time.post.sign(datetime=article.date.toISOString() )
           = article.date.format("YYYY-MM-DD")
 
       ul.tags.group

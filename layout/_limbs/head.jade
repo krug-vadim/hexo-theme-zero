@@ -12,7 +12,10 @@ title
 //- link(rel='stylesheet', type='text/css', href=theme.cdn.normalize + '/normalize/3.0.3/normalize.min.css')
 //- link(rel='stylesheet', type='text/css', href=theme.cdn.carbon + '/css/carbon.css')
 //- link(rel='stylesheet', type='text/css', href=url_for('css/cm/cmun-typewriter.css'))
-link(rel='stylesheet', type='text/css', href=url_for('css/serif/cmun-serif.css'))
+//-feed('/atom')
+link(rel="alternate", type="application/atom+xml", href=url_for('atom.xml'))
+link(rel='stylesheet', type='text/css', href='https://fonts.googleapis.com/css?family=Exo+2')
+link(rel='stylesheet', type='text/css', href='https://fonts.googleapis.com/css?family=Source+Code+Pro')
 link(rel='stylesheet', type='text/css', href=url_for('css/castle_in_the_snow.css'))
 if theme.favicon
   link(rel="icon", href=theme.favicon)
